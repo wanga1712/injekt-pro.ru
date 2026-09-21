@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<defs>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#D6B273"/>
+    <stop offset="100%" stop-color="#BE9458"/>
+  </linearGradient>
+  <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#A9282A"/>
+    <stop offset="100%" stop-color="#82191B"/>
+  </linearGradient>
+</defs>
+<rect x="61.440" y="61.440" width="901.120" height="901.120"
+      rx="174.080" fill="#111416" stroke="#252A2E" stroke-width="8.192"/>
+<g aria-label="Kardinal mark">
+<polygon points="334.7653,158.7200 163.4780,162.2885 165.8570,865.2800 334.7653,697.5612" fill="url(#gold)"/>
+<polygon points="860.5220,159.9095 642.8444,159.9095 365.6921,444.1988 364.5026,672.5818" fill="url(#gold)"/>
+<polygon points="437.0618,639.2760 677.3398,859.3325 846.2481,859.3325 733.2461,716.5931 564.3378,515.5685" fill="url(#gold)"/>
+<polygon points="490.5891,710.6457 491.7786,862.9010 652.3604,861.7115" fill="url(#red)"/>
+</g>
+</svg>
