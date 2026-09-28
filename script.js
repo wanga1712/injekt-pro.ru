@@ -121,8 +121,15 @@ hero.after(objectSales);
 document.querySelectorAll('.eyebrow').forEach((label) => {
   label.textContent = label.textContent.replace(/^\s*\d+\s*\/\s*/, '').trim();
 });
-const areaPhotos = ['zone-expansion-joint.webp', 'zone-construction-joint.webp', 'zone-communication-entry.webp', 'zone-active-leak.webp', 'zone-wall-filtration.webp', 'zone-wall-slab-junction.webp'];
-objectSales.querySelectorAll('.photo-grid .image-slot').forEach((slot, index) => { const title = slot.parentElement.querySelector('h3').textContent; slot.style.backgroundImage = 'none'; slot.innerHTML = `<img src="assets/images/${areaPhotos[index]}" alt="${title}" width="1536" height="1024" loading="lazy" decoding="async">`; slot.classList.add('has-image'); slot.setAttribute('aria-label', `Фотография зоны: ${title}`); });
+const areaPhotos = [
+  { file: 'zone-expansion-joint.webp', alt: 'Специалист обследует деформационный шов в бетонной стене подземного паркинга', focus: 'center' },
+  { file: 'zone-construction-joint.webp', alt: 'Обследование рабочего и холодного шва на бетонной стене подземного сооружения', focus: 'center' },
+  { file: 'zone-communication-entry.webp', alt: 'Герметизация ввода коммуникаций: трубы проходят через бетонную стену технического помещения', focus: 'center' },
+  { file: 'zone-active-leak.webp', alt: 'Устранение активной протечки: инъектирование трещины в бетонной стене, из которой поступает вода', focus: 'center 30%' },
+  { file: 'zone-wall-filtration.webp', alt: 'Фильтрация воды через бетонную стену подземного паркинга: влажные участки и высолы', focus: 'center' },
+  { file: 'zone-wall-slab-junction.webp', alt: 'Примыкание стены и плиты в подземном паркинге: обследование узла сопряжения конструкций', focus: 'center' }
+];
+objectSales.querySelectorAll('.photo-grid .image-slot').forEach((slot, index) => { const title = slot.parentElement.querySelector('h3').textContent; const photo = areaPhotos[index]; slot.style.backgroundImage = 'none'; slot.innerHTML = `<img src="assets/images/${photo.file}" alt="${photo.alt}" width="900" height="672" loading="lazy" decoding="async" style="object-position:${photo.focus}">`; slot.classList.add('has-image'); slot.setAttribute('aria-label', `Фотография зоны: ${title}`); });
 const worksPhoto = objectSales.querySelector('.image-slot-large');
 worksPhoto.style.backgroundImage = 'none';
 worksPhoto.innerHTML = '<img src="assets/images/work-team.webp" alt="Команда выполняет инъектирование" width="1536" height="1024" loading="lazy" decoding="async">';

@@ -94,10 +94,11 @@ h1,h2,h3,em{overflow-wrap:anywhere}
 .object-areas .zone-card{position:relative;display:flex;flex-direction:column;width:100%;height:390px;min-width:0;min-height:0;padding:0 0 24px;background:#f5f3ee;border:1px solid #d2cec5;overflow:hidden;cursor:pointer;transition:border-color .25s ease,background .25s ease}
 .object-areas .zone-card:hover,.object-areas .zone-card:focus-visible,.object-areas .zone-card.is-active{border-color:#bda27e;background:#f8f6f1;outline:none}
 .object-areas .zone-card .image-slot{height:210px;flex:0 0 210px;aspect-ratio:auto;border:0;padding:0;order:0}
-.object-areas .zone-card .image-slot img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.object-areas .zone-card .image-slot img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s ease}
 .object-areas .zone-card .image-slot{position:relative}
 .object-areas .zone-card .image-slot:after{content:"";position:absolute;inset:0;background:rgba(12,14,15,.34);opacity:0;transition:opacity .25s ease}
 .object-areas .zone-card:hover .image-slot:after,.object-areas .zone-card:focus-visible .image-slot:after,.object-areas .zone-card.is-active .image-slot:after{opacity:1}
+.object-areas .zone-card:hover .image-slot img,.object-areas .zone-card:focus-visible .image-slot img,.object-areas .zone-card.is-active .image-slot img{transform:scale(1.045)}
 .object-areas .zone-number{position:absolute;z-index:2;left:18px;top:18px;color:#d7a36a;font:11px 'DM Mono';letter-spacing:.08em;text-shadow:0 1px 5px rgba(0,0,0,.45)}
 .object-areas .zone-number{display:none}
 .object-areas .zone-card h3{order:1;margin:19px 18px 0;max-width:280px;color:#151719;font-size:19px;line-height:1.15}
