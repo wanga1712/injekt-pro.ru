@@ -35,7 +35,7 @@ hero.querySelector('.hero-art').style.setProperty('background-position', 'center
 const navLinks = document.querySelectorAll('.main-nav a');
 [['Зоны работ', '#areas'], ['Выполнение работ', '#works'], ['Как работаем', '#field-process'], ['Обследование', '#survey']].forEach(([label, href], index) => { if (navLinks[index]) { navLinks[index].textContent = label; navLinks[index].href = href; } });
 
-const ASSET_VERSION = 'v5';
+const ASSET_VERSION = 'v6';
 const BEFORE_AFTER_CHEVRONS = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.6 8.4 6 12l3.6 3.6M14.4 8.4 18 12l-3.6 3.6"/></svg>';
 const initBeforeAfterSlider = (root) => {
   const range = root.querySelector('.ba-range');
@@ -234,7 +234,7 @@ const WORK_STEPS = [
     alt: 'Инъектирование состава через пакеры: специалист подаёт состав, оператор работает с насосом'
   },
   {
-    file: 'work-05-local-sealing.webp', w: 862, h: 646,
+    file: 'work-05-local-sealing.webp', w: 756, h: 567,
     title: 'Локальная заделка',
     text: 'После завершения инъектирования и демонтажа пакеров заделываем технологические отверстия и приводим участок в техническое состояние.',
     alt: 'Заделанные технологические отверстия и следы инъектирования на обработанном участке стены'
