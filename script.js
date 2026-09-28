@@ -50,7 +50,7 @@ objectSales.className = 'object-sales';
 objectSales.innerHTML = `
   <section class="section light object-areas" id="areas"><div class="container"><div class="section-heading split"><div><p class="eyebrow dark">01 / ЗОНЫ РАБОТЫ</p><h2>Работаем с основными зонами протечек <em>в подземных конструкциях</em></h2></div><p>Покажите нам объект — мы определим, где проходит вода и что нужно сделать, чтобы восстановить герметичность.</p></div><div class="photo-grid"><article><div class="image-slot">Фото зоны протечки / деформационный шов</div><h3>Деформационные швы</h3><p>Герметизация подвижных узлов подземных конструкций.</p></article><article><div class="image-slot">Фото рабочей зоны / трещина в бетоне</div><h3>Рабочие и холодные швы</h3><p>Инъектирование границ бетонирования и примыканий.</p></article><article><div class="image-slot">Фото стены / ввод коммуникаций</div><h3>Вводы коммуникаций</h3><p>Герметизация пустот вокруг труб и проходок.</p></article><article><div class="image-slot">Фото мокрого участка конструкции</div><h3>Активные протечки</h3><p>Остановка водопритока и постоянная герметизация.</p></article><article><div class="image-slot">Фото стены подвала</div><h3>Фильтрация через стену</h3><p>Локальная и заэкранная гидроизоляция изнутри.</p></article><article><div class="image-slot">Фото примыкания стена / плита</div><h3>Подвалы и техпомещения</h3><p>Работы с железобетонными конструкциями действующих объектов.</p></article></div></div></section>
   <section class="section section-dark object-types"><div class="container"><div class="section-heading"><p class="eyebrow">02 / ОБЪЕКТЫ</p><h2>Где мы <em>работаем</em></h2></div><div class="object-type-list"><span>Подземные паркинги</span><span>Подвалы МКД</span><span>Технические помещения</span><span>Подземные части зданий</span><span>Коммерческие объекты</span><span>Эксплуатируемые объекты</span><span>Объекты капитального ремонта</span></div></div></section>
-  <section class="section light work-section" id="works"><div class="container work-layout"><div class="image-slot image-slot-large">Фото команды на объекте / выполнение инъектирования</div><div><p class="eyebrow dark">03 / ВЫПОЛНЕНИЕ РАБОТ</p><h2>Выполняем работы по гидроизоляции и <em>инъектированию</em></h2><ul class="work-list"><li>Инъектирование трещин и деформационных швов</li><li>Герметизация рабочих и холодных швов</li><li>Герметизация вводов коммуникаций</li><li>Устранение активных протечек</li><li>Локальная гидроизоляция подземных конструкций</li><li>Восстановление герметичности железобетона</li></ul></div></div></section>
+  <section class="section light work-section" id="works"></section>
   <section class="section section-dark client-section"><div class="container"><p class="eyebrow">04 / ЗАКАЗЧИКИ</p><h2>Работаем с эксплуатационными<br>и <em>объектными заказчиками</em></h2><p class="client-intro">Работаем с ГБУ «Жилищник», управляющими организациями, службами эксплуатации, коммерческими объектами и объектами капитального ремонта.</p><div class="client-tags"><span>ГБУ «Жилищник»</span><span>УК</span><span>ТСЖ / ЖСК</span><span>ЭКСПЛУАТАЦИЯ</span><span>КАПРЕМОНТ</span><span>615</span></div><div class="client-columns"><p>Понимаем объектную специфику</p><p>Готовим технические решения и ТЗ</p><p>Сопровождаем до этапа работ</p></div></div></section>
   <section class="section light field-process" id="field-process"><div class="container"><div class="section-heading split"><div><p class="eyebrow dark">05 / КАК РАБОТАЕМ</p><h2>Работа по объекту — <em>по шагам</em></h2></div><p class="free-callout">Обследование — бесплатно,<br>без обязательств.</p></div><div class="field-steps"><span><b>01</b>Первичный контакт</span><span><b>02</b>Выезд и обследование</span><span><b>03</b>Фотофиксация дефектов</span><span><b>04</b>Подбор технологии</span><span><b>05</b>Техническое решение</span><span><b>06</b>ТКП / смета</span><span><b>07</b>Подготовка ТЗ</span><span><b>08</b>Выполнение работ</span><span><b>09</b>Контроль результата</span></div></div></section>`;
 const areasSection = objectSales.querySelector('#areas');
@@ -208,122 +208,138 @@ const areaPhotos = [
   { file: 'zone-wall-slab-junction.webp', alt: 'Примыкание стены и плиты в подземном паркинге: обследование узла сопряжения конструкций', focus: 'center' }
 ];
 objectSales.querySelectorAll('.photo-grid .image-slot').forEach((slot, index) => { const title = slot.parentElement.querySelector('h3').textContent; const photo = areaPhotos[index]; slot.style.backgroundImage = 'none'; slot.innerHTML = `<img src="assets/images/${photo.file}" alt="${photo.alt}" width="900" height="672" loading="lazy" decoding="async" style="object-position:${photo.focus}">`; slot.classList.add('has-image'); slot.setAttribute('aria-label', `Фотография зоны: ${title}`); });
-const worksPhoto = objectSales.querySelector('.image-slot-large');
-worksPhoto.style.backgroundImage = 'none';
-worksPhoto.innerHTML = '<img src="assets/images/work-team.webp" alt="Команда выполняет инъектирование" width="1536" height="1024" loading="lazy" decoding="async">';
-worksPhoto.classList.add('has-image');
-worksPhoto.setAttribute('aria-label', 'Фотография команды, выполняющей инъектирование');
-const detailImages = document.createElement('div');
-detailImages.className = 'works-detail-images';
-detailImages.innerHTML = '<div class="image-slot has-image" aria-label="Фото бурения"></div><div class="image-slot has-image" aria-label="Фото насоса и пакеров"></div>';
-detailImages.children[0].innerHTML = '<img src="assets/images/work-drilling.webp" alt="Бурение инъекционных отверстий" width="1536" height="1024" loading="lazy" decoding="async">';
-detailImages.children[1].innerHTML = '<img src="assets/images/work-pump.webp" alt="Насос и пакеры на объекте" width="1536" height="1024" loading="lazy" decoding="async">';
-worksPhoto.parentElement.insertBefore(detailImages, worksPhoto.nextSibling);
-detailImages.remove();
-const worksCopy = objectSales.querySelector('.work-section .work-layout > div:last-child');
-if (worksCopy) {
-  worksCopy.innerHTML = `<p class="eyebrow dark">ВЫПОЛНЕНИЕ РАБОТ</p><h2>Инъектирование<br>и гидроизоляция</h2><p class="works-intro">Подбираем технологию под тип дефекта, характер водопритока и состояние конструкции.</p><div class="work-service-list"><article><span class="work-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 38 17 10l7 15 15-8"/><path d="m24 25 6 13"/></svg></span><div><h3>Инъектирование трещин</h3><p>Заполнение трещин и восстановление герметичности железобетона.</p></div></article><article><span class="work-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 11h34M7 24h34M7 37h34"/><path class="work-accent" d="M18 7v34"/></svg></span><div><h3>Деформационные швы</h3><p>Герметизация подвижных конструктивных узлов.</p></div></article><article><span class="work-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 7v34m30-34v34M9 16h30M9 32h30"/><circle cx="24" cy="24" r="4"/><path class="work-accent" d="M24 3v13m0 16v13"/></svg></span><div><h3>Рабочие и холодные швы</h3><p>Восстановление герметичности границ бетонирования.</p></div></article><article><span class="work-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 10h34v28H7zM13 31c5-10 9-10 13 0s8 10 15 0"/><path class="work-accent" d="M24 10v9"/></svg></span><div><h3>Вводы коммуникаций</h3><p>Герметизация проходок и пустот вокруг труб.</p></div></article><article><span class="work-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 7h34v34H7zM15 15h18v18H15z"/><path class="work-accent" d="m15 33 18-18"/></svg></span><div><h3>Активные протечки</h3><p>Остановка водопритока и постоянная герметизация.</p></div></article><article><span class="work-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 10h36v29H6zM14 10v29m20-29v29M6 24h36"/><path class="work-accent" d="M20 32h8"/></svg></span><div><h3>Локальная гидроизоляция</h3><p>Защита отдельных участков подземных конструкций.</p></div></article></div>`;
-}
-const serviceItems = [...objectSales.querySelectorAll('.work-service-list article')];
-if (serviceItems.length === 6) {
-  const iconMarkup = serviceItems.map((item) => item.querySelector('.work-icon').innerHTML);
-  const serviceCopy = [
-    ['Инъектирование трещин и деформационных швов', 'Заполнение дефектов и восстановление герметичности конструкции.'],
-    ['Рабочие и холодные швы', 'Герметизация границ бетонирования и конструктивных примыканий.'],
-    ['Вводы коммуникаций', 'Герметизация проходок и пустот вокруг инженерных вводов.'],
-    ['Активные протечки', 'Локализация водопритока и последующая постоянная герметизация.'],
-    ['Локальная гидроизоляция', 'Защита проблемных участков подземных конструкций.'],
-    ['Герметичность железобетона', 'Восстановление повреждённых и негерметичных конструктивных участков.']
-  ];
-  const iconOrder = [iconMarkup[0], iconMarkup[2], iconMarkup[3], iconMarkup[4], iconMarkup[5], iconMarkup[1]];
-  serviceItems.forEach((item, index) => {
-    item.dataset.workIndex = String(index);
-    item.querySelector('.work-icon').innerHTML = iconOrder[index];
-    item.querySelector('h3').textContent = serviceCopy[index][0];
-    item.querySelector('p').textContent = serviceCopy[index][1];
-  });
-}
-const workSection = objectSales.querySelector('.work-section');
-const workLayout = workSection?.querySelector('.work-layout');
-const workCopy = workSection?.querySelector('.work-layout > div:last-child');
-if (workSection && workLayout && workCopy) {
-  const label = workCopy.querySelector('.eyebrow');
-  const heading = workCopy.querySelector('h2');
-  const intro = workCopy.querySelector('.works-intro');
-  const services = workCopy.querySelector('.work-service-list');
-  const headingRow = document.createElement('div');
-  headingRow.className = 'section-heading split work-heading';
-  const headingCopy = document.createElement('div');
-  headingCopy.append(label, heading);
-  headingRow.append(headingCopy, intro);
-  workCopy.replaceChildren(services);
-  workLayout.classList.remove('container');
+const WORK_STEPS = [
+  {
+    file: 'work-01-inspection.webp', w: 1118, h: 838,
+    title: 'Диагностика и обследование',
+    text: 'Фиксируем дефект, характер водопритока и состояние конструкции.',
+    alt: 'Инженеры обследуют дефект бетонной стены в подземном паркинге: тепловизор и планшет'
+  },
+  {
+    file: 'work-02-injection-layout.webp', w: 1118, h: 838,
+    title: 'Подготовка схемы инъектирования',
+    text: 'Размечаем точки подачи состава с учётом геометрии шва, трещины или примыкания.',
+    alt: 'Разметка точек инъектирования по шву на бетонной стене'
+  },
+  {
+    file: 'work-03-packer-installation.webp', w: 1118, h: 838,
+    title: 'Установка пакеров',
+    text: 'Устанавливаем точки подачи состава по принятой схеме инъектирования.',
+    alt: 'Установленные пакеры по линии шва на бетонной стене, специалист проверяет монтаж'
+  },
+  {
+    file: 'work-04-injection.webp', w: 1260, h: 945,
+    title: 'Инъектирование',
+    text: 'Последовательно подаём состав через установленные пакеры и заполняем внутренний объём дефекта.',
+    alt: 'Инъектирование состава через пакеры: специалист подаёт состав, оператор работает с насосом'
+  },
+  {
+    file: 'work-05-local-sealing.webp', w: 862, h: 646,
+    title: 'Локальная заделка',
+    text: 'После завершения инъектирования и демонтажа пакеров заделываем технологические отверстия и приводим участок в техническое состояние.',
+    alt: 'Заделанные технологические отверстия и следы инъектирования на обработанном участке стены'
+  },
+  {
+    file: 'work-06-result-control.webp', w: 1246, h: 935,
+    title: 'Контроль результата',
+    text: 'Проверяем отсутствие водопритока и состояние обработанного участка.',
+    alt: 'Инженер контролирует результат работ: влагомер и планшет у обработанного участка стены'
+  }
+];
+const initWorkProcess = () => {
+  const workSection = objectSales.querySelector('.work-section');
+  if (!workSection) return;
+  const workSrc = WORK_STEPS.map((step) => 'assets/images/' + step.file + '?v=' + ASSET_VERSION);
   const inner = document.createElement('div');
   inner.className = 'container work-section-inner';
-  inner.append(headingRow, workLayout);
+  inner.innerHTML = '<div class="section-heading split work-heading">'
+    + '<div><p class="eyebrow dark">ВЫПОЛНЕНИЕ РАБОТ</p><h2>Как выполняем<br>инъекционные работы</h2></div>'
+    + '<p>От диагностики дефекта до контроля результата — каждый этап выполняется по принятой технической схеме.</p>'
+    + '</div>'
+    + '<div class="work-process">'
+    + '<div class="work-stage" id="work-stage" role="tabpanel" aria-labelledby="work-step-1">'
+    + '<img class="work-stage-img is-active" src="' + workSrc[0] + '" alt="' + WORK_STEPS[0].alt + '" width="' + WORK_STEPS[0].w + '" height="' + WORK_STEPS[0].h + '" loading="lazy" decoding="async">'
+    + '<img class="work-stage-img" alt="" aria-hidden="true" decoding="async">'
+    + '<span class="work-stage-count" aria-hidden="true">01 / 06</span>'
+    + '</div>'
+    + '<div class="work-steps" role="tablist" aria-orientation="vertical" aria-label="Этапы выполнения инъекционных работ"></div>'
+    + '</div>';
+  const steps = inner.querySelector('.work-steps');
+  steps.innerHTML = WORK_STEPS.map((step, index) => {
+    const number = String(index + 1).padStart(2, '0');
+    return '<button type="button" class="work-step' + (index === 0 ? ' is-active' : '') + '" role="tab" id="work-step-' + (index + 1) + '" aria-controls="work-stage" aria-selected="' + (index === 0) + '" data-step="' + index + '">'
+      + '<span class="work-step-no">' + number + '</span>'
+      + '<span class="work-step-main">'
+      + '<span class="work-step-title">' + step.title + '</span>'
+      + '<span class="work-step-text">' + step.text + '</span>'
+      + '<img class="work-step-photo" src="' + workSrc[index] + '" alt="" aria-hidden="true" width="' + step.w + '" height="' + step.h + '" loading="lazy" decoding="async">'
+      + '</span>'
+      + '</button>';
+  }).join('');
   workSection.replaceChildren(inner);
-}
-const workItems = [...objectSales.querySelectorAll('.work-section .work-service-list article')];
-const workStage = objectSales.querySelector('.work-section .image-slot-large');
-const workTechSources = ['work-injection-cracks.webp', 'work-construction-joints.webp', 'work-communication-entry.webp', 'work-active-leak.webp', 'work-local-waterproofing.webp', 'work-concrete-restoration.webp'];
-if (workStage && workItems.length === workTechSources.length) {
-  workStage.classList.add('work-visual-stage');
-  const defaultVisual = workStage.querySelector('img');
-  defaultVisual.classList.add('work-default-visual');
-  const techVisual = document.createElement('img');
-  techVisual.className = 'work-tech-visual';
-  techVisual.alt = '';
-  techVisual.setAttribute('aria-hidden', 'true');
-  workStage.append(techVisual);
-  let lockedWork = null;
-  const clearWorkSelection = () => {
-    lockedWork = null;
-    workStage.classList.remove('is-tech-preview');
-    techVisual.removeAttribute('src');
-    workItems.forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
-  };
-  const showWorkPreview = (index, lock = false) => {
-    techVisual.src = `assets/images/${workTechSources[index]}`;
-    techVisual.alt = workItems[index].querySelector('h3').textContent;
-    workStage.classList.add('is-tech-preview');
-    if (lock) {
-      lockedWork = index;
-      workItems.forEach((item, itemIndex) => { const on = itemIndex === index; item.classList.toggle('is-selected', on); item.setAttribute('aria-pressed', String(on)); });
-    }
-  };
-  workItems.forEach((item, index) => {
-    item.setAttribute('role', 'button');
-    item.setAttribute('tabindex', '0');
-    item.setAttribute('aria-pressed', 'false');
-    item.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); item.click(); } });
-    item.addEventListener('mouseenter', () => {
-      if (!window.matchMedia('(hover: hover)').matches || lockedWork !== null) return;
-      showWorkPreview(index);
+  const panel = inner.querySelector('.work-stage');
+  const layers = [...panel.querySelectorAll('.work-stage-img')];
+  const counter = panel.querySelector('.work-stage-count');
+  const tabs = [...steps.querySelectorAll('.work-step')];
+  const total = String(WORK_STEPS.length).padStart(2, '0');
+  let front = 0;
+  let active = 0;
+  const select = (index) => {
+    if (index === active || index < 0 || index >= tabs.length) return;
+    active = index;
+    tabs.forEach((tab, tabIndex) => {
+      const on = tabIndex === index;
+      tab.classList.toggle('is-active', on);
+      tab.setAttribute('aria-selected', String(on));
     });
-    item.addEventListener('mouseleave', () => {
-      if (!window.matchMedia('(hover: hover)').matches || lockedWork !== null) return;
-      clearWorkSelection();
-    });
-    item.addEventListener('click', () => {
-      if (window.matchMedia('(max-width: 720px)').matches) {
-        const current = item.querySelector('.work-mobile-preview');
-        document.querySelectorAll('.work-mobile-preview').forEach((preview) => preview.remove());
-        workItems.forEach((entry) => { entry.classList.remove('is-selected'); entry.setAttribute('aria-pressed', 'false'); });
-        if (current) return;
-        const mobilePreview = document.createElement('img');
-        mobilePreview.className = 'work-mobile-preview';
-        mobilePreview.src = `assets/images/${workTechSources[index]}`;
-        mobilePreview.alt = item.querySelector('h3').textContent;
-        item.append(mobilePreview);
-        item.classList.add('is-selected');
-        item.setAttribute('aria-pressed', 'true');
+    panel.setAttribute('aria-labelledby', 'work-step-' + (index + 1));
+    counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + total;
+    const back = layers[1 - front];
+    const prev = layers[front];
+    back.src = workSrc[index];
+    back.alt = WORK_STEPS[index].alt;
+    back.classList.add('is-active');
+    front = 1 - front;
+    window.setTimeout(() => prev.classList.remove('is-active'), 300);
+  };
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => select(index));
+    tab.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+        event.preventDefault();
+        select(index);
         return;
       }
-      showWorkPreview(index, true);
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight' || event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        const forward = event.key === 'ArrowDown' || event.key === 'ArrowRight';
+        const next = (index + (forward ? 1 : -1) + tabs.length) % tabs.length;
+        tabs[next].focus();
+        select(next);
+        return;
+      }
+      if (event.key === 'Home') { event.preventDefault(); tabs[0].focus(); select(0); return; }
+      if (event.key === 'End') { event.preventDefault(); tabs[tabs.length - 1].focus(); select(tabs.length - 1); }
     });
   });
-  workStage.addEventListener('click', clearWorkSelection);
-}
+  let preloaded = false;
+  const preload = () => {
+    if (preloaded) return;
+    preloaded = true;
+    workSrc.slice(1).forEach((src) => { const image = new Image(); image.src = src; });
+  };
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) { preload(); observer.disconnect(); }
+    }, { rootMargin: '600px 0px' });
+    observer.observe(workSection);
+  } else {
+    window.addEventListener('load', preload, { once: true });
+  }
+  steps.addEventListener('pointerdown', preload, { once: true });
+  steps.addEventListener('focusin', preload, { once: true });
+};
+initWorkProcess();
 document.querySelectorAll('.location,.defects,.injection,.assessment,.audience,.process-v3').forEach((section) => { section.hidden = true; });
 const hotspotText = {
   joint: ['01 / ДЕФОРМАЦИОННЫЙ ШОВ', 'Подвижный узел, в котором нарушилась герметичность.'],
