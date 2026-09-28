@@ -8,6 +8,10 @@ const updateHeaderState = () => {
 window.addEventListener('scroll', updateHeaderState, { passive: true });
 updateHeaderState();
 const menuToggle = document.querySelector('.menu-toggle');
+const primaryNav = document.querySelector('.main-nav');
+if (primaryNav && !primaryNav.id) primaryNav.id = 'primary-nav';
+menuToggle?.setAttribute('aria-expanded', 'false');
+if (primaryNav) menuToggle?.setAttribute('aria-controls', primaryNav.id);
 document.querySelector('link[href="assets/icons/favicon.svg"]')?.remove();
 const faviconLinks = [['icon', 'assets/icons/favicon-48x48.png', '48x48'], ['icon', 'assets/icons/favicon-32x32.png', '32x32'], ['icon', 'assets/icons/favicon-16x16.png', '16x16'], ['apple-touch-icon', 'assets/icons/apple-touch-icon.png', null]];
 faviconLinks.forEach(([rel, href, sizes]) => { const link = document.createElement('link'); link.rel = rel; link.href = href; if (sizes) link.sizes = sizes; if (rel === 'icon' && href.endsWith('.png')) link.type = 'image/png'; document.head.append(link); });
@@ -25,7 +29,7 @@ hero.querySelector('.hero-offer')?.remove();
 hero.querySelector('.hero-markers')?.remove();
 hero.querySelector('.outline-link')?.remove();
 hero.querySelector('.hero-actions .button').innerHTML = 'Записаться на бесплатное обследование <span>↗</span>';
-hero.querySelector('.hero-art').style.setProperty('background-image', "linear-gradient(to bottom,rgba(7,10,12,.88) 0%,rgba(7,10,12,.72) 18%,rgba(7,10,12,.48) 34%,rgba(7,10,12,.18) 52%,rgba(7,10,12,0) 68%),linear-gradient(90deg,rgba(8,10,12,.86) 0%,rgba(8,10,12,.72) 30%,rgba(8,10,12,.46) 58%,rgba(8,10,12,.22) 78%,rgba(8,10,12,.10) 100%),url('assets/images/hero-waterproofing-team.png')", 'important');
+hero.querySelector('.hero-art').style.setProperty('background-image', "linear-gradient(to bottom,rgba(7,10,12,.88) 0%,rgba(7,10,12,.72) 18%,rgba(7,10,12,.48) 34%,rgba(7,10,12,.18) 52%,rgba(7,10,12,0) 68%),linear-gradient(90deg,rgba(8,10,12,.86) 0%,rgba(8,10,12,.72) 30%,rgba(8,10,12,.46) 58%,rgba(8,10,12,.22) 78%,rgba(8,10,12,.10) 100%),url('assets/images/hero-waterproofing-team.webp')", 'important');
 hero.querySelector('.hero-art').style.setProperty('background-size', 'cover', 'important');
 hero.querySelector('.hero-art').style.setProperty('background-position', 'center', 'important');
 const navLinks = document.querySelectorAll('.main-nav a');
@@ -88,7 +92,7 @@ if (objectTypes) {
   objectTypes.innerHTML = `<div class="container object-types-inner"><div class="object-types-heading"><div><p class="eyebrow">02 / ТИПЫ ОБЪЕКТОВ</p><h2>Работаем с подземными<br>и <em>заглублёнными сооружениями</em></h2></div><p>Решаем задачи гидроизоляции<br>на действующих и строящихся объектах.</p></div><div class="object-diagram-grid"><article class="object-diagram"><span class="diagram-number">01</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M30 115V45l100-25 100 25v70"/><path d="M30 45h200M55 51v28h50V39h50v40h50V51M30 115h200"/><path class="underground" d="M30 115h200v25H30z"/><path d="M55 115v25m50-25v25m50-25v25m50-25v25"/><path class="accent-line" d="M55 125h150"/></svg><h3>ПОДЗЕМНЫЕ ПАРКИНГИ</h3><p>Паркинги и многоуровневые подземные конструкции.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">02</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M55 115V38h150v77M40 115h180M70 38V20h120v18M80 55h25v25H80zm75 0h25v25h-25z"/><path class="underground" d="M55 95h150v45H55z"/><path d="M80 95v45m50-45v45m50-45v45"/><path class="accent-line" d="M70 108h120"/></svg><h3>ПОДВАЛЫ МКД</h3><p>Подвальные помещения жилых многоквартирных домов.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">03</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M35 110h190M50 110V55h160v55M50 55h160M70 75h120M70 94h120"/><path class="underground" d="M50 110h160v30H50z"/><path d="M78 110v30m52-30v30m52-30v30"/><path class="accent-line" d="M70 122h120"/><path d="M85 48v-18m45 18V20m45 28V30"/><circle cx="85" cy="25" r="4"/><circle cx="130" cy="15" r="4"/><circle cx="175" cy="25" r="4"/></svg><h3>ТЕХНИЧЕСКИЕ ПОМЕЩЕНИЯ</h3><p>Подземные этажи с инженерными сетями и вводами.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">04</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M45 110V32h170v78M30 110h200M70 32V18h120v14M70 55h120M70 78h120"/><path class="underground" d="M45 110h170v30H45z"/><path d="M75 110v30m55-30v30m55-30v30"/><path class="accent-line" d="M65 122h130"/></svg><h3>БИЗНЕС-ЦЕНТРЫ И ТОРГОВЫЕ ОБЪЕКТЫ</h3><p>Крупные здания с подземными уровнями.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">05</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M55 35h150v75H55zM35 110h190M75 35v75m55-75v75m55-75v75"/><path class="underground" d="M55 110h150v30H55z"/><path d="M75 110v30m55-30v30m55-30v30"/><path class="accent-line" d="M70 122h120"/></svg><h3>ПОДЗЕМНЫЕ ЧАСТИ ЗДАНИЙ</h3><p>Фундаменты, стены и заглублённые объёмы.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">06</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M40 110V42l90-23 90 23v68M40 42h180M65 55h45v25H65zm85 0h45v25h-45z"/><path class="underground" d="M40 110h180v30H40z"/><path d="M70 110v30m60-30v30m60-30v30"/><path class="accent-line" d="M60 122h140"/><path class="repair-line" d="M130 19v121"/></svg><h3>ОБЪЕКТЫ КАПИТАЛЬНОГО РЕМОНТА</h3><p>Действующие здания с участками восстановления.</p><small>Гидроизоляция и инъекционные работы</small></article></div></div>`;
 }
 if (objectTypes) {
-  objectTypes.innerHTML = `<div class="container object-types-inner"><div class="object-types-heading"><div><p class="eyebrow">ТИПЫ ОБЪЕКТОВ</p><h2>Подземные<br>и <em>заглублённые<br>сооружения</em></h2></div><p>Паркинги, подвалы, технические и коммерческие объекты — от локальных дефектов до комплексного восстановления гидроизоляции.</p></div><div class="object-photo-grid"><article class="object-photo-card object-photo-featured"><div class="object-photo"><img src="assets/images/object-underground-parking.png" alt="Подземный паркинг" loading="lazy" decoding="async"></div><span class="object-photo-number">01</span><h3>Подземные паркинги</h3><p>Многоуровневые паркинги жилых и коммерческих объектов.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Швы, трещины, вводы коммуникаций, примыкания и фильтрация воды через железобетонные конструкции.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-apartment-basement.png" alt="Подвал многоквартирного дома" loading="lazy" decoding="async"></div><span class="object-photo-number">02</span><h3>Подвалы МКД</h3><p>Подвальные помещения и заглублённые части жилых домов.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Протечки через стены и плиты, рабочие швы, вводы коммуникаций и зоны сопряжения конструкций.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-technical-room.png" alt="Техническое помещение" loading="lazy" decoding="async"></div><span class="object-photo-number">03</span><h3>Технические помещения</h3><p>Помещения с инженерными сетями, оборудованием и коммуникациями.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Герметизация проходок, локальных протечек и участков, где вода контактирует с инженерными системами.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-commercial-building.png" alt="Бизнес-центр и торговый объект" loading="lazy" decoding="async"></div><span class="object-photo-number">04</span><h3>Бизнес-центры и торговые объекты</h3><p>Подземные уровни БЦ, ТЦ и других коммерческих зданий.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Гидроизоляция эксплуатируемых подземных помещений с минимальным вмешательством в работу объекта.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-underground-structure.png" alt="Подземная часть здания" loading="lazy" decoding="async"></div><span class="object-photo-number">05</span><h3>Подземные части зданий</h3><p>Фундаменты, стены, плиты и другие заглублённые конструкции.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Восстановление герметичности конструктивных узлов и защита от поступления грунтовой воды.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-capital-repair.png" alt="Объект капитального ремонта" loading="lazy" decoding="async"></div><span class="object-photo-number">06</span><h3>Объекты капитального ремонта</h3><p>Действующие здания, где требуется восстановление гидроизоляции.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Обследование, техническое решение, подготовка объёмов и выполнение работ на существующих конструкциях.</span></div></article></div></div>`;
+  objectTypes.innerHTML = `<div class="container object-types-inner"><div class="object-types-heading"><div><p class="eyebrow">ТИПЫ ОБЪЕКТОВ</p><h2>Подземные<br>и <em>заглублённые<br>сооружения</em></h2></div><p>Паркинги, подвалы, технические и коммерческие объекты — от локальных дефектов до комплексного восстановления гидроизоляции.</p></div><div class="object-photo-grid"><article class="object-photo-card object-photo-featured"><div class="object-photo"><img src="assets/images/object-underground-parking.webp" alt="Подземный паркинг" loading="lazy" decoding="async"></div><span class="object-photo-number">01</span><h3>Подземные паркинги</h3><p>Многоуровневые паркинги жилых и коммерческих объектов.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Швы, трещины, вводы коммуникаций, примыкания и фильтрация воды через железобетонные конструкции.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-apartment-basement.webp" alt="Подвал многоквартирного дома" loading="lazy" decoding="async"></div><span class="object-photo-number">02</span><h3>Подвалы МКД</h3><p>Подвальные помещения и заглублённые части жилых домов.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Протечки через стены и плиты, рабочие швы, вводы коммуникаций и зоны сопряжения конструкций.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-technical-room.webp" alt="Техническое помещение" loading="lazy" decoding="async"></div><span class="object-photo-number">03</span><h3>Технические помещения</h3><p>Помещения с инженерными сетями, оборудованием и коммуникациями.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Герметизация проходок, локальных протечек и участков, где вода контактирует с инженерными системами.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-commercial-building.webp" alt="Бизнес-центр и торговый объект" loading="lazy" decoding="async"></div><span class="object-photo-number">04</span><h3>Бизнес-центры и торговые объекты</h3><p>Подземные уровни БЦ, ТЦ и других коммерческих зданий.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Гидроизоляция эксплуатируемых подземных помещений с минимальным вмешательством в работу объекта.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-underground-structure.webp" alt="Подземная часть здания" loading="lazy" decoding="async"></div><span class="object-photo-number">05</span><h3>Подземные части зданий</h3><p>Фундаменты, стены, плиты и другие заглублённые конструкции.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Восстановление герметичности конструктивных узлов и защита от поступления грунтовой воды.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-capital-repair.webp" alt="Объект капитального ремонта" loading="lazy" decoding="async"></div><span class="object-photo-number">06</span><h3>Объекты капитального ремонта</h3><p>Действующие здания, где требуется восстановление гидроизоляции.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Обследование, техническое решение, подготовка объёмов и выполнение работ на существующих конструкциях.</span></div></article></div></div>`;
 }
 if (objectTypes) {
   objectTypes.querySelector('.object-types-heading h2').innerHTML = 'Подземные и<br><span class="heading-accent">заглублённые</span> сооружения';
@@ -117,18 +121,18 @@ hero.after(objectSales);
 document.querySelectorAll('.eyebrow').forEach((label) => {
   label.textContent = label.textContent.replace(/^\s*\d+\s*\/\s*/, '').trim();
 });
-const areaPhotos = ['zone-expansion-joint.png', 'zone-construction-joint.png', 'zone-communication-entry.png', 'zone-active-leak.png', 'zone-wall-filtration.png', 'zone-wall-slab-junction.png'];
-objectSales.querySelectorAll('.photo-grid .image-slot').forEach((slot, index) => { const title = slot.parentElement.querySelector('h3').textContent; slot.style.backgroundImage = 'none'; slot.innerHTML = `<img src="assets/images/${areaPhotos[index]}" alt="${title}" width="1536" height="1024" loading="eager" decoding="sync">`; slot.classList.add('has-image'); slot.setAttribute('aria-label', `Фотография зоны: ${title}`); });
+const areaPhotos = ['zone-expansion-joint.webp', 'zone-construction-joint.webp', 'zone-communication-entry.webp', 'zone-active-leak.webp', 'zone-wall-filtration.webp', 'zone-wall-slab-junction.webp'];
+objectSales.querySelectorAll('.photo-grid .image-slot').forEach((slot, index) => { const title = slot.parentElement.querySelector('h3').textContent; slot.style.backgroundImage = 'none'; slot.innerHTML = `<img src="assets/images/${areaPhotos[index]}" alt="${title}" width="1536" height="1024" loading="lazy" decoding="async">`; slot.classList.add('has-image'); slot.setAttribute('aria-label', `Фотография зоны: ${title}`); });
 const worksPhoto = objectSales.querySelector('.image-slot-large');
 worksPhoto.style.backgroundImage = 'none';
-worksPhoto.innerHTML = '<img src="assets/images/work-team.png" alt="Команда выполняет инъектирование" width="1536" height="1024" loading="eager" decoding="sync">';
+worksPhoto.innerHTML = '<img src="assets/images/work-team.webp" alt="Команда выполняет инъектирование" width="1536" height="1024" loading="lazy" decoding="async">';
 worksPhoto.classList.add('has-image');
 worksPhoto.setAttribute('aria-label', 'Фотография команды, выполняющей инъектирование');
 const detailImages = document.createElement('div');
 detailImages.className = 'works-detail-images';
 detailImages.innerHTML = '<div class="image-slot has-image" aria-label="Фото бурения"></div><div class="image-slot has-image" aria-label="Фото насоса и пакеров"></div>';
-detailImages.children[0].innerHTML = '<img src="assets/images/work-drilling.png" alt="Бурение инъекционных отверстий" width="1536" height="1024" loading="eager" decoding="sync">';
-detailImages.children[1].innerHTML = '<img src="assets/images/work-pump.png" alt="Насос и пакеры на объекте" width="1536" height="1024" loading="eager" decoding="sync">';
+detailImages.children[0].innerHTML = '<img src="assets/images/work-drilling.webp" alt="Бурение инъекционных отверстий" width="1536" height="1024" loading="lazy" decoding="async">';
+detailImages.children[1].innerHTML = '<img src="assets/images/work-pump.webp" alt="Насос и пакеры на объекте" width="1536" height="1024" loading="lazy" decoding="async">';
 worksPhoto.parentElement.insertBefore(detailImages, worksPhoto.nextSibling);
 detailImages.remove();
 const worksCopy = objectSales.querySelector('.work-section .work-layout > div:last-child');
@@ -176,7 +180,7 @@ if (workSection && workLayout && workCopy) {
 }
 const workItems = [...objectSales.querySelectorAll('.work-section .work-service-list article')];
 const workStage = objectSales.querySelector('.work-section .image-slot-large');
-const workTechSources = ['work-injection-cracks.png', 'work-construction-joints.png', 'work-communication-entry.png', 'work-active-leak.png', 'work-local-waterproofing.png', 'work-concrete-restoration.png'];
+const workTechSources = ['work-injection-cracks.webp', 'work-construction-joints.webp', 'work-communication-entry.webp', 'work-active-leak.webp', 'work-local-waterproofing.webp', 'work-concrete-restoration.webp'];
 if (workStage && workItems.length === workTechSources.length) {
   workStage.classList.add('work-visual-stage');
   const defaultVisual = workStage.querySelector('img');
@@ -191,7 +195,7 @@ if (workStage && workItems.length === workTechSources.length) {
     lockedWork = null;
     workStage.classList.remove('is-tech-preview');
     techVisual.removeAttribute('src');
-    workItems.forEach((item) => item.classList.remove('is-selected'));
+    workItems.forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
   };
   const showWorkPreview = (index, lock = false) => {
     techVisual.src = `assets/images/${workTechSources[index]}`;
@@ -199,10 +203,14 @@ if (workStage && workItems.length === workTechSources.length) {
     workStage.classList.add('is-tech-preview');
     if (lock) {
       lockedWork = index;
-      workItems.forEach((item, itemIndex) => item.classList.toggle('is-selected', itemIndex === index));
+      workItems.forEach((item, itemIndex) => { const on = itemIndex === index; item.classList.toggle('is-selected', on); item.setAttribute('aria-pressed', String(on)); });
     }
   };
   workItems.forEach((item, index) => {
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-pressed', 'false');
+    item.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); item.click(); } });
     item.addEventListener('mouseenter', () => {
       if (!window.matchMedia('(hover: hover)').matches || lockedWork !== null) return;
       showWorkPreview(index);
@@ -215,7 +223,7 @@ if (workStage && workItems.length === workTechSources.length) {
       if (window.matchMedia('(max-width: 720px)').matches) {
         const current = item.querySelector('.work-mobile-preview');
         document.querySelectorAll('.work-mobile-preview').forEach((preview) => preview.remove());
-        workItems.forEach((entry) => entry.classList.remove('is-selected'));
+        workItems.forEach((entry) => { entry.classList.remove('is-selected'); entry.setAttribute('aria-pressed', 'false'); });
         if (current) return;
         const mobilePreview = document.createElement('img');
         mobilePreview.className = 'work-mobile-preview';
@@ -223,6 +231,7 @@ if (workStage && workItems.length === workTechSources.length) {
         mobilePreview.alt = item.querySelector('h3').textContent;
         item.append(mobilePreview);
         item.classList.add('is-selected');
+        item.setAttribute('aria-pressed', 'true');
         return;
       }
       showWorkPreview(index, true);
@@ -250,7 +259,9 @@ document.querySelectorAll('[data-action="survey"]').forEach((target) => target.a
 menuToggle?.addEventListener('click', () => {
   const open = header.classList.toggle('menu-open');
   menuToggle.setAttribute('aria-expanded', String(open));
+  menuToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
 });
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && header.classList.contains('menu-open')) { header.classList.remove('menu-open'); menuToggle?.setAttribute('aria-expanded', 'false'); menuToggle?.setAttribute('aria-label', 'Открыть меню'); } });
 document.querySelectorAll('.main-nav a').forEach((link) => link.addEventListener('click', () => header.classList.remove('menu-open')));
 
 function showHotspot(key, source) {
