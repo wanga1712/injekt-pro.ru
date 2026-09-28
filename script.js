@@ -35,6 +35,16 @@ hero.querySelector('.hero-art').style.setProperty('background-position', 'center
 const navLinks = document.querySelectorAll('.main-nav a');
 [['Зоны работ', '#areas'], ['Выполнение работ', '#works'], ['Как работаем', '#field-process'], ['Обследование', '#survey']].forEach(([label, href], index) => { if (navLinks[index]) { navLinks[index].textContent = label; navLinks[index].href = href; } });
 
+const ASSET_VERSION = 'v5';
+const BEFORE_AFTER_CHEVRONS = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.6 8.4 6 12l3.6 3.6M14.4 8.4 18 12l-3.6 3.6"/></svg>';
+const initBeforeAfterSlider = (root) => {
+  const range = root.querySelector('.ba-range');
+  if (!range) return;
+  const apply = () => { root.style.setProperty('--ba', range.value + '%'); };
+  apply();
+  range.addEventListener('input', apply);
+  range.addEventListener('change', apply);
+};
 const objectSales = document.createElement('section');
 objectSales.className = 'object-sales';
 objectSales.innerHTML = `
@@ -92,7 +102,7 @@ if (objectTypes) {
   objectTypes.innerHTML = `<div class="container object-types-inner"><div class="object-types-heading"><div><p class="eyebrow">02 / ТИПЫ ОБЪЕКТОВ</p><h2>Работаем с подземными<br>и <em>заглублёнными сооружениями</em></h2></div><p>Решаем задачи гидроизоляции<br>на действующих и строящихся объектах.</p></div><div class="object-diagram-grid"><article class="object-diagram"><span class="diagram-number">01</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M30 115V45l100-25 100 25v70"/><path d="M30 45h200M55 51v28h50V39h50v40h50V51M30 115h200"/><path class="underground" d="M30 115h200v25H30z"/><path d="M55 115v25m50-25v25m50-25v25m50-25v25"/><path class="accent-line" d="M55 125h150"/></svg><h3>ПОДЗЕМНЫЕ ПАРКИНГИ</h3><p>Паркинги и многоуровневые подземные конструкции.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">02</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M55 115V38h150v77M40 115h180M70 38V20h120v18M80 55h25v25H80zm75 0h25v25h-25z"/><path class="underground" d="M55 95h150v45H55z"/><path d="M80 95v45m50-45v45m50-45v45"/><path class="accent-line" d="M70 108h120"/></svg><h3>ПОДВАЛЫ МКД</h3><p>Подвальные помещения жилых многоквартирных домов.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">03</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M35 110h190M50 110V55h160v55M50 55h160M70 75h120M70 94h120"/><path class="underground" d="M50 110h160v30H50z"/><path d="M78 110v30m52-30v30m52-30v30"/><path class="accent-line" d="M70 122h120"/><path d="M85 48v-18m45 18V20m45 28V30"/><circle cx="85" cy="25" r="4"/><circle cx="130" cy="15" r="4"/><circle cx="175" cy="25" r="4"/></svg><h3>ТЕХНИЧЕСКИЕ ПОМЕЩЕНИЯ</h3><p>Подземные этажи с инженерными сетями и вводами.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">04</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M45 110V32h170v78M30 110h200M70 32V18h120v14M70 55h120M70 78h120"/><path class="underground" d="M45 110h170v30H45z"/><path d="M75 110v30m55-30v30m55-30v30"/><path class="accent-line" d="M65 122h130"/></svg><h3>БИЗНЕС-ЦЕНТРЫ И ТОРГОВЫЕ ОБЪЕКТЫ</h3><p>Крупные здания с подземными уровнями.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">05</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M55 35h150v75H55zM35 110h190M75 35v75m55-75v75m55-75v75"/><path class="underground" d="M55 110h150v30H55z"/><path d="M75 110v30m55-30v30m55-30v30"/><path class="accent-line" d="M70 122h120"/></svg><h3>ПОДЗЕМНЫЕ ЧАСТИ ЗДАНИЙ</h3><p>Фундаменты, стены и заглублённые объёмы.</p><small>Гидроизоляция и инъекционные работы</small></article><article class="object-diagram"><span class="diagram-number">06</span><svg viewBox="0 0 260 150" aria-hidden="true"><path d="M40 110V42l90-23 90 23v68M40 42h180M65 55h45v25H65zm85 0h45v25h-45z"/><path class="underground" d="M40 110h180v30H40z"/><path d="M70 110v30m60-30v30m60-30v30"/><path class="accent-line" d="M60 122h140"/><path class="repair-line" d="M130 19v121"/></svg><h3>ОБЪЕКТЫ КАПИТАЛЬНОГО РЕМОНТА</h3><p>Действующие здания с участками восстановления.</p><small>Гидроизоляция и инъекционные работы</small></article></div></div>`;
 }
 if (objectTypes) {
-  objectTypes.innerHTML = `<div class="container object-types-inner"><div class="object-types-heading"><div><p class="eyebrow">ТИПЫ ОБЪЕКТОВ</p><h2>Подземные<br>и <em>заглублённые<br>сооружения</em></h2></div><p>Паркинги, подвалы, технические и коммерческие объекты — от локальных дефектов до комплексного восстановления гидроизоляции.</p></div><div class="object-photo-grid"><article class="object-photo-card object-photo-featured"><div class="object-photo"><img src="assets/images/object-underground-parking.webp" alt="Подземный паркинг" loading="lazy" decoding="async"></div><span class="object-photo-number">01</span><h3>Подземные паркинги</h3><p>Многоуровневые паркинги жилых и коммерческих объектов.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Швы, трещины, вводы коммуникаций, примыкания и фильтрация воды через железобетонные конструкции.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-apartment-basement.webp" alt="Подвал многоквартирного дома" loading="lazy" decoding="async"></div><span class="object-photo-number">02</span><h3>Подвалы МКД</h3><p>Подвальные помещения и заглублённые части жилых домов.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Протечки через стены и плиты, рабочие швы, вводы коммуникаций и зоны сопряжения конструкций.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-technical-room.webp" alt="Техническое помещение" loading="lazy" decoding="async"></div><span class="object-photo-number">03</span><h3>Технические помещения</h3><p>Помещения с инженерными сетями, оборудованием и коммуникациями.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Герметизация проходок, локальных протечек и участков, где вода контактирует с инженерными системами.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-commercial-building.webp" alt="Бизнес-центр и торговый объект" loading="lazy" decoding="async"></div><span class="object-photo-number">04</span><h3>Бизнес-центры и торговые объекты</h3><p>Подземные уровни БЦ, ТЦ и других коммерческих зданий.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Гидроизоляция эксплуатируемых подземных помещений с минимальным вмешательством в работу объекта.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-underground-structure.webp" alt="Подземная часть здания" loading="lazy" decoding="async"></div><span class="object-photo-number">05</span><h3>Подземные части зданий</h3><p>Фундаменты, стены, плиты и другие заглублённые конструкции.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Восстановление герметичности конструктивных узлов и защита от поступления грунтовой воды.</span></div></article><article class="object-photo-card"><div class="object-photo"><img src="assets/images/object-capital-repair.webp" alt="Объект капитального ремонта" loading="lazy" decoding="async"></div><span class="object-photo-number">06</span><h3>Объекты капитального ремонта</h3><p>Действующие здания, где требуется восстановление гидроизоляции.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Обследование, техническое решение, подготовка объёмов и выполнение работ на существующих конструкциях.</span></div></article></div></div>`;
+  objectTypes.innerHTML = `<div class="container object-types-inner"><div class="object-types-heading"><div><p class="eyebrow">ТИПЫ ОБЪЕКТОВ</p><h2>Подземные<br>и <em>заглублённые<br>сооружения</em></h2></div><p>Паркинги, подвалы, технические и коммерческие объекты — от локальных дефектов до комплексного восстановления гидроизоляции.</p></div><div class="object-photo-grid"><article class="object-photo-card object-photo-featured"><div class="object-photo"></div><span class="object-photo-number">01</span><h3>Подземные паркинги</h3><p>Многоуровневые паркинги жилых и коммерческих объектов.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Швы, трещины, вводы коммуникаций, примыкания и фильтрация воды через железобетонные конструкции.</span></div></article><article class="object-photo-card"><div class="object-photo"></div><span class="object-photo-number">02</span><h3>Подвалы МКД</h3><p>Подвальные помещения и заглублённые части жилых домов.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Протечки через стены и плиты, рабочие швы, вводы коммуникаций и зоны сопряжения конструкций.</span></div></article><article class="object-photo-card"><div class="object-photo"></div><span class="object-photo-number">03</span><h3>Технические помещения</h3><p>Помещения с инженерными сетями, оборудованием и коммуникациями.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Герметизация проходок, локальных протечек и участков, где вода контактирует с инженерными системами.</span></div></article><article class="object-photo-card"><div class="object-photo"></div><span class="object-photo-number">04</span><h3>Бизнес-центры и торговые объекты</h3><p>Подземные уровни БЦ, ТЦ и других коммерческих зданий.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Гидроизоляция эксплуатируемых подземных помещений с минимальным вмешательством в работу объекта.</span></div></article><article class="object-photo-card"><div class="object-photo"></div><span class="object-photo-number">05</span><h3>Подземные части зданий</h3><p>Фундаменты, стены, плиты и другие заглублённые конструкции.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Восстановление герметичности конструктивных узлов и защита от поступления грунтовой воды.</span></div></article><article class="object-photo-card"><div class="object-photo"></div><span class="object-photo-number">06</span><h3>Объекты капитального ремонта</h3><p>Действующие здания, где требуется восстановление гидроизоляции.</p><span class="object-photo-more">Подробнее</span><div class="object-photo-tasks"><strong>ТИПОВЫЕ ЗАДАЧИ</strong><span>Обследование, техническое решение, подготовка объёмов и выполнение работ на существующих конструкциях.</span></div></article></div></div>`;
 }
 if (objectTypes) {
   objectTypes.querySelector('.object-types-heading h2').innerHTML = 'Подземные и<br><span class="heading-accent">заглублённые</span> сооружения';
@@ -116,8 +126,76 @@ if (objectTypes) {
     card.querySelector('h3').textContent = objectTitles[index];
     card.querySelector('p').textContent = objectDescriptions[index];
   });
+
+  const objectTypeMedia = [
+    {
+      before: 'object-underground-parking-before.webp',
+      after: 'object-underground-parking-after.webp',
+      w: 900, h: 675,
+      altBefore: 'Подземный паркинг: протечка по рабочему шву бетонной стены, мокрый след и лужа на полу',
+      altAfter: 'Подземный паркинг после инъекционной гидроизоляции: шов герметичен, стена и пол сухие'
+    },
+    {
+      before: 'object-apartment-basement-before.webp',
+      after: 'object-apartment-basement-after.webp',
+      w: 1024, h: 768,
+      altBefore: 'Подвал многоквартирного дома: сырость и высолы по примыканию стены к плите, мокрые следы фильтрации',
+      altAfter: 'Тот же подвал после инъекционной гидроизоляции: примыкание герметично, стена и пол сухие'
+    },
+    {
+      before: 'object-technical-room-before.webp',
+      after: 'object-technical-room-after.webp',
+      w: 506, h: 380,
+      altBefore: 'Техническое помещение: негерметичный ввод коммуникаций, следы фильтрации и коррозии вокруг трубы',
+      altAfter: 'Техническое помещение после герметизации ввода: проходка трубы сухая и герметичная'
+    },
+    {
+      before: 'object-commercial-building-before.webp',
+      after: 'object-commercial-building-after.webp',
+      w: 495, h: 371,
+      altBefore: 'Подземный уровень коммерческого объекта: следы протечки на железобетонной колонне',
+      altAfter: 'Та же колонна после локального инъекционного ремонта: протечка устранена, поверхность восстановлена'
+    },
+    {
+      before: 'object-underground-structure-before.webp',
+      after: 'object-underground-structure-after.webp',
+      w: 533, h: 400,
+      altBefore: 'Подземная часть здания: высолы на колонне, мокрые потёки и лужа воды на полу',
+      altAfter: 'Тот же узел после инъекционного ремонта: колонна восстановлена, пол сухой'
+    },
+    {
+      before: 'object-capital-repair-before.webp',
+      after: 'object-capital-repair-after.webp',
+      w: 760, h: 570,
+      altBefore: 'Эксплуатируемый объект капитального ремонта: повторная протечка, высолы на колонне и мокрая лужа у основания',
+      altAfter: 'Тот же участок после восстановления гидроизоляции: колонна сухая, лужа устранена'
+    }
+  ];
+  objectTypeMedia.forEach((media, index) => {
+    const box = objectCards[index]?.querySelector('.object-photo');
+    if (!box) return;
+    const title = objectTitles[index];
+    if (media.pending) {
+      box.classList.add('is-pending');
+      box.setAttribute('role', 'img');
+      box.setAttribute('aria-label', title + ': фотографии до и после готовятся к публикации');
+      box.innerHTML = '<span class="pending-note">Фото до / после<br>готовится</span>';
+      return;
+    }
+    box.classList.add('has-slider');
+    box.innerHTML = '<div class="ba" data-before-after role="group" aria-label="' + title + ': сравнение до и после" style="--ba:50%">'
+      + '<input class="ba-range" type="range" min="0" max="100" step="1" value="50" aria-label="' + title + ': сравнение до и после, ползунок" aria-valuetext="50%">'
+      + '<img class="ba-img ba-before" src="assets/images/' + media.before + '?v=' + ASSET_VERSION + '" alt="' + media.altBefore + '" width="' + media.w + '" height="' + media.h + '" loading="lazy" decoding="async">'
+      + '<img class="ba-img ba-after" src="assets/images/' + media.after + '?v=' + ASSET_VERSION + '" alt="' + media.altAfter + '" width="' + media.w + '" height="' + media.h + '" loading="lazy" decoding="async">'
+      + '<span class="ba-tag ba-tag-before" aria-hidden="true">До</span>'
+      + '<span class="ba-tag ba-tag-after" aria-hidden="true">После</span>'
+      + '<span class="ba-line" aria-hidden="true"></span>'
+      + '<span class="ba-knob" aria-hidden="true">' + BEFORE_AFTER_CHEVRONS + '</span>'
+      + '</div>';
+  });
 }
 hero.after(objectSales);
+document.querySelectorAll('[data-before-after]').forEach(initBeforeAfterSlider);
 document.querySelectorAll('.eyebrow').forEach((label) => {
   label.textContent = label.textContent.replace(/^\s*\d+\s*\/\s*/, '').trim();
 });
