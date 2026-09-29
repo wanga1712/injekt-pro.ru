@@ -193,7 +193,7 @@ h1,h2,h3,em{overflow-wrap:anywhere}
    Типы объектов: сравнение до/после
    ============================================================ */
 .object-photo.has-slider{position:relative;overflow:hidden}
-.ba{position:absolute;inset:0;--ba:50%;user-select:none;-webkit-user-select:none}
+.ba{position:absolute;inset:0;--ba:58%;user-select:none;-webkit-user-select:none}
 .object-photo .ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;-webkit-user-drag:none}
 .ba-before{z-index:0}
 .ba-after{z-index:1;clip-path:inset(0 0 0 var(--ba))}

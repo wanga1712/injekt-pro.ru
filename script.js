@@ -35,12 +35,15 @@ hero.querySelector('.hero-art').style.setProperty('background-position', 'center
 const navLinks = document.querySelectorAll('.main-nav a');
 [['Зоны работ', '#areas'], ['Выполнение работ', '#works'], ['Как работаем', '#field-process'], ['Обследование', '#survey']].forEach(([label, href], index) => { if (navLinks[index]) { navLinks[index].textContent = label; navLinks[index].href = href; } });
 
-const ASSET_VERSION = 'v6';
+const ASSET_VERSION = 'v9';
 const BEFORE_AFTER_CHEVRONS = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.6 8.4 6 12l3.6 3.6M14.4 8.4 18 12l-3.6 3.6"/></svg>';
 const initBeforeAfterSlider = (root) => {
   const range = root.querySelector('.ba-range');
   if (!range) return;
-  const apply = () => { root.style.setProperty('--ba', range.value + '%'); };
+  const apply = () => {
+    root.style.setProperty('--ba', range.value + '%');
+    range.setAttribute('aria-valuetext', range.value + '%');
+  };
   apply();
   range.addEventListener('input', apply);
   range.addEventListener('change', apply);
@@ -131,7 +134,7 @@ if (objectTypes) {
     {
       before: 'object-underground-parking-before.webp',
       after: 'object-underground-parking-after.webp',
-      w: 900, h: 675,
+      w: 700, h: 525,
       altBefore: 'Подземный паркинг: протечка по рабочему шву бетонной стены, мокрый след и лужа на полу',
       altAfter: 'Подземный паркинг после инъекционной гидроизоляции: шов герметичен, стена и пол сухие'
     },
@@ -183,8 +186,8 @@ if (objectTypes) {
       return;
     }
     box.classList.add('has-slider');
-    box.innerHTML = '<div class="ba" data-before-after role="group" aria-label="' + title + ': сравнение до и после" style="--ba:50%">'
-      + '<input class="ba-range" type="range" min="0" max="100" step="1" value="50" aria-label="' + title + ': сравнение до и после, ползунок" aria-valuetext="50%">'
+    box.innerHTML = '<div class="ba" data-before-after role="group" aria-label="' + title + ': сравнение до и после" style="--ba:58%">'
+      + '<input class="ba-range" type="range" min="0" max="100" step="1" value="58" aria-label="' + title + ': сравнение до и после, ползунок" aria-valuetext="58%">'
       + '<img class="ba-img ba-before" src="assets/images/' + media.before + '?v=' + ASSET_VERSION + '" alt="' + media.altBefore + '" width="' + media.w + '" height="' + media.h + '" loading="lazy" decoding="async">'
       + '<img class="ba-img ba-after" src="assets/images/' + media.after + '?v=' + ASSET_VERSION + '" alt="' + media.altAfter + '" width="' + media.w + '" height="' + media.h + '" loading="lazy" decoding="async">'
       + '<span class="ba-tag ba-tag-before" aria-hidden="true">До</span>'
@@ -234,7 +237,7 @@ const WORK_STEPS = [
     alt: 'Инъектирование состава через пакеры: специалист подаёт состав, оператор работает с насосом'
   },
   {
-    file: 'work-05-local-sealing.webp', w: 756, h: 567,
+    file: 'work-05-local-sealing.webp', w: 1200, h: 900,
     title: 'Локальная заделка',
     text: 'После завершения инъектирования и демонтажа пакеров заделываем технологические отверстия и приводим участок в техническое состояние.',
     alt: 'Заделанные технологические отверстия и следы инъектирования на обработанном участке стены'
