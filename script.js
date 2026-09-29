@@ -35,7 +35,7 @@ hero.querySelector('.hero-art').style.setProperty('background-position', 'center
 const navLinks = document.querySelectorAll('.main-nav a');
 [['Зоны работ', '#areas'], ['Выполнение работ', '#works'], ['Как работаем', '#field-process'], ['Обследование', '#survey']].forEach(([label, href], index) => { if (navLinks[index]) { navLinks[index].textContent = label; navLinks[index].href = href; } });
 
-const ASSET_VERSION = 'v9';
+const ASSET_VERSION = 'v10';
 const BEFORE_AFTER_CHEVRONS = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.6 8.4 6 12l3.6 3.6M14.4 8.4 18 12l-3.6 3.6"/></svg>';
 const initBeforeAfterSlider = (root) => {
   const range = root.querySelector('.ba-range');
@@ -132,46 +132,46 @@ if (objectTypes) {
 
   const objectTypeMedia = [
     {
-      before: 'object-underground-parking-before.webp',
-      after: 'object-underground-parking-after.webp',
+      before: 'object-underground-parking-after.webp',
+      after: 'object-underground-parking-before.webp',
       w: 700, h: 525,
-      altBefore: 'Подземный паркинг: протечка по рабочему шву бетонной стены, мокрый след и лужа на полу',
-      altAfter: 'Подземный паркинг после инъекционной гидроизоляции: шов герметичен, стена и пол сухие'
+      altBefore: 'Подземный паркинг после инъекционной гидроизоляции: шов герметичен, стена и пол сухие',
+      altAfter: 'Подземный паркинг: протечка по рабочему шву бетонной стены, мокрый след и лужа на полу'
     },
     {
-      before: 'object-apartment-basement-before.webp',
-      after: 'object-apartment-basement-after.webp',
+      before: 'object-apartment-basement-after.webp',
+      after: 'object-apartment-basement-before.webp',
       w: 1024, h: 768,
-      altBefore: 'Подвал многоквартирного дома: сырость и высолы по примыканию стены к плите, мокрые следы фильтрации',
-      altAfter: 'Тот же подвал после инъекционной гидроизоляции: примыкание герметично, стена и пол сухие'
+      altBefore: 'Тот же подвал после инъекционной гидроизоляции: примыкание герметично, стена и пол сухие',
+      altAfter: 'Подвал многоквартирного дома: сырость и высолы по примыканию стены к плите, мокрые следы фильтрации'
     },
     {
-      before: 'object-technical-room-before.webp',
-      after: 'object-technical-room-after.webp',
+      before: 'object-technical-room-after.webp',
+      after: 'object-technical-room-before.webp',
       w: 506, h: 380,
-      altBefore: 'Техническое помещение: негерметичный ввод коммуникаций, следы фильтрации и коррозии вокруг трубы',
-      altAfter: 'Техническое помещение после герметизации ввода: проходка трубы сухая и герметичная'
+      altBefore: 'Техническое помещение после герметизации ввода: проходка трубы сухая и герметичная',
+      altAfter: 'Техническое помещение: негерметичный ввод коммуникаций, следы фильтрации и коррозии вокруг трубы'
     },
     {
-      before: 'object-commercial-building-before.webp',
-      after: 'object-commercial-building-after.webp',
+      before: 'object-commercial-building-after.webp',
+      after: 'object-commercial-building-before.webp',
       w: 495, h: 371,
-      altBefore: 'Подземный уровень коммерческого объекта: следы протечки на железобетонной колонне',
-      altAfter: 'Та же колонна после локального инъекционного ремонта: протечка устранена, поверхность восстановлена'
+      altBefore: 'Та же колонна после локального инъекционного ремонта: протечка устранена, поверхность восстановлена',
+      altAfter: 'Подземный уровень коммерческого объекта: следы протечки на железобетонной колонне'
     },
     {
-      before: 'object-underground-structure-before.webp',
-      after: 'object-underground-structure-after.webp',
+      before: 'object-underground-structure-after.webp',
+      after: 'object-underground-structure-before.webp',
       w: 533, h: 400,
-      altBefore: 'Подземная часть здания: высолы на колонне, мокрые потёки и лужа воды на полу',
-      altAfter: 'Тот же узел после инъекционного ремонта: колонна восстановлена, пол сухой'
+      altBefore: 'Тот же узел после инъекционного ремонта: колонна восстановлена, пол сухой',
+      altAfter: 'Подземная часть здания: высолы на колонне, мокрые потёки и лужа воды на полу'
     },
     {
-      before: 'object-capital-repair-before.webp',
-      after: 'object-capital-repair-after.webp',
+      before: 'object-capital-repair-after.webp',
+      after: 'object-capital-repair-before.webp',
       w: 760, h: 570,
-      altBefore: 'Эксплуатируемый объект капитального ремонта: повторная протечка, высолы на колонне и мокрая лужа у основания',
-      altAfter: 'Тот же участок после восстановления гидроизоляции: колонна сухая, лужа устранена'
+      altBefore: 'Тот же участок после восстановления гидроизоляции: колонна сухая, лужа устранена',
+      altAfter: 'Эксплуатируемый объект капитального ремонта: повторная протечка, высолы на колонне и мокрая лужа у основания'
     }
   ];
   objectTypeMedia.forEach((media, index) => {
